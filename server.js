@@ -1,14 +1,23 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import initializeDatabase from './db/db.connect.js'
+import emailDraftRoute from './routes/emailDraft.routes.js'
+import cors from 'cors'
 dotenv.config()
 
 const PORT = process.env.PORT
 const app = express()
-
-initializeDatabase()
-
 app.use(express.json())
+app.use(cors({
+    origin: "http://localhost:5173/"
+}))
+initializeDatabase()
+app.get('/', (req,res) => {
+    res.send("welcome")
+})
+
+
+app.use('/api',emailDraftRoute)
 
 app.listen(PORT, () => {
     console.log("Server connected to PORT:",PORT)
