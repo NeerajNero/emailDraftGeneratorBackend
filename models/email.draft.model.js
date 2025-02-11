@@ -3,15 +3,18 @@ import mongoose from "mongoose";
 const emailDraftSchema = new mongoose.Schema({
         emailSectionName: {
             type: String,
-            require: true
+            required: true
         },
         emailSubSectionName: {
             type: String,
-            require: true
+            required: true
         },
         emailBody: {
             type: String,
-            require: true
+            required: true
+        },
+        suggestedNotes: {
+            type: String,
         }
 })
 

@@ -1,11 +1,11 @@
 import { Email } from "../models/email.draft.model.js"
 export const addEmailDraft = async(req,res) => {
     try{
-        const {emailSectionName, emailSubSectionName, emailBody} = req.body
+        const {emailSectionName, emailSubSectionName, emailBody, suggestedNotes} = req.body
         if(!emailSectionName || !emailSubSectionName || !emailBody){
             return res.status(400).json("all fields are required")
         }
-        const createEmailDraft = new Email({emailSectionName, emailSubSectionName, emailBody})
+        const createEmailDraft = new Email({emailSectionName, emailSubSectionName, emailBody, suggestedNotes})
         const saveEmail = await createEmailDraft.save()
         if(!saveEmail){
             return res.status(400).json("error while saving email")
@@ -42,7 +42,7 @@ export const getEmailDraftWithName = async(req,res) => {
         })
         
         const formattedEmailBody = emailDraft.emailBody.replace(/{customerName}/g, customerName).replace(/{appName}/g, appName);
-        res.status(200).json({ emailBody: formattedEmailBody });
+        res.status(200).json({ emailBody: formattedEmailBody, suggestedNotes: emailDraft.suggestedNotes });
     }catch(error){
         console.log("error occured while adding email",error)
         res.status(500).json({error: "unable to add email", message: error.message})
