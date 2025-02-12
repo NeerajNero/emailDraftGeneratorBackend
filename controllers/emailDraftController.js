@@ -40,7 +40,9 @@ export const getEmailDraftWithName = async(req,res) => {
             "emailSectionName": emailSectionName,
             "emailSubSectionName": emailSubSectionName
         })
-        
+        if(!emailDraft){
+            return res.status(404).json("email not found")
+        }
         const formattedEmailBody = emailDraft.emailBody.replace(/{customerName}/g, customerName).replace(/{appName}/g, appName);
         res.status(200).json({ emailBody: formattedEmailBody, suggestedNotes: emailDraft.suggestedNotes });
     }catch(error){
