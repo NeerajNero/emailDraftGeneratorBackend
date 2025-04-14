@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import initializeDatabase from './db/db.connect.js'
 import emailDraftRoute from './routes/emailDraft.routes.js'
+import appsRoutes from './routes/appsInfo.routes.js'
 import cors from 'cors'
 dotenv.config()
 
@@ -18,6 +19,7 @@ app.get('/', (req,res) => {
 
 
 app.use('/api',emailDraftRoute)
+app.use('/apps',appsRoutes)
 
 app.listen(PORT, () => {
     console.log("Server connected to PORT:",PORT)
