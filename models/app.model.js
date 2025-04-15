@@ -12,6 +12,11 @@ const appSchema = new mongoose.Schema({
     appMailId: {
         type: String,
         required: true
+    },
+    platform: {
+        type: String,
+        enum: ['IOS','ANDROID'],
+        required: true
     }
 })
 

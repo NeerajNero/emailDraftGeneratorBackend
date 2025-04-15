@@ -4,6 +4,7 @@ import { addAppsInfo, getAllAppsInfo } from "../controllers/appsInfo.controller.
 const router = Router()
 
 router.post('/addAppsInfo', addAppsInfo)
-router.post('/getAppsData', getAllAppsInfo)
+router.get('/getAppData/:platform/app/:appName')
+router.get('/getAppsData', getAllAppsInfo)
 
 export default router
