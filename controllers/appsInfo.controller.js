@@ -3,7 +3,7 @@ import { AppsInfo } from "../models/app.model.js";
 export const addAppsInfo = async(req,res) => {
     try{
         const {appName, appLink, appMailId, platform} = req.body
-        if(!appName || !appLink || !appMailId || platform){
+        if(!appName || !appLink || !appMailId || !platform){
             return res.status(400).json("All fields are required!")
         }
         const appData = new AppsInfo({appName, appLink, appMailId, platform})
