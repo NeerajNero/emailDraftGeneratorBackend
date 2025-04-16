@@ -3,15 +3,18 @@ import mongoose from "mongoose";
 const appSchema = new mongoose.Schema({
     appName: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     appLink: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     appMailId: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     platform: {
         type: String,
