@@ -21,6 +21,6 @@ const appSchema = new mongoose.Schema({
         enum: ['IOS','ANDROID'],
         required: true
     }
-})
+},{timestamps: true})
 
 export const AppsInfo = mongoose.model('AppsInfo', appSchema, "AppsInfoDB")
