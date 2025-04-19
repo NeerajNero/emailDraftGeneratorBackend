@@ -39,7 +39,7 @@ export const getAppDataByPlatform = async(req,res) => {
         }
         const getAllAppsData = await AppsInfo.find({platform})
         if(!getAllAppsData || getAllAppsData.length === 0){
-            return res.status(404).json({message: "No apps data found"})
+            return res.status(404).json({message: "No apps data found!"})
         }
         res.status(200).json({message: "all apps data fetched successfully.", appsData: getAllAppsData})
     }catch(error){
