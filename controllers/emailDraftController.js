@@ -50,3 +50,27 @@ export const getEmailDraftWithName = async(req,res) => {
         res.status(500).json({error: "unable to add email", message: error.message})
     }
 }
+
+export const modifyMails = async(req,res) => {
+    try{
+        const oldNumber = "8792912390"
+        const newNumber = "9845339809"
+        const regex = new RegExp(oldNumber, "g");
+        const mails = await Email.find({ emailBody: { $regex: oldNumber } })
+
+        let count = 0;
+        for (const mail of mails) {
+            const updatedMail = mail.emailBody.replace(regex, newNumber)
+            if(updatedMail !== mail.emailbody) {
+                mail.emailBody = updatedMail
+                await mail.save()
+                console.log(`Updated: ${updatedMail}`);
+                count++
+            } 
+        } 
+        res.status(200).json({message: "all mails updated successfully!", totalMails: count})
+    }catch(error){
+        console.log("error occured while Modifying emails",error)
+        res.status(500).json({error: "unable to add email", message: error.message})
+    }
+}
