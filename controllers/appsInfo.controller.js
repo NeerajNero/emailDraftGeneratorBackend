@@ -14,7 +14,7 @@ export const addAppsInfo = async(req,res) => {
         res.status(201).json({message: "app Data stored successfully."})
     }catch(error){
         console.log("error occured while adding appsData", error.message)
-        res.status(500).json({message: "Internal server error", error: error.message})
+        res.status(500).json({message: "Internal server error!", error: error.message})
     }
 }
 
