@@ -10,7 +10,7 @@ const PORT = process.env.PORT
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: ["https://email-draft-generator.vercel.app", "http://localhost:5173"]
+    origin: ["https://emaildraftgeneratorwork.vercel.app/", "http://localhost:5173"]
 }))
 initializeDatabase()
 app.get('/', (req,res) => {
